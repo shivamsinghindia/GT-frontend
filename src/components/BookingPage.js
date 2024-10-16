@@ -37,7 +37,7 @@ useEffect(() => {
 
   const fetchCenters = async () => {
     try {
-      const response = await axios.get('http://localhost:8000/api/centers');
+      const response = await axios.get('https://gt-backend.onrender.com/api/centers');
       setCenters(response.data);
     } catch (error) {
       console.error('Error fetching centers:', error);
@@ -46,7 +46,7 @@ useEffect(() => {
 
   const fetchSports = async (centerId) => {
     try {
-      const response = await axios.get(`http://localhost:8000/api/sports?center=${centerId}`);
+      const response = await axios.get(`https://gt-backend.onrender.com/api/sports?center=${centerId}`);
       setSports(response.data);
       setSelectedSport(''); // Reset selected sport when center changes
       setAvailableCourts([]); // Reset available courts
@@ -58,7 +58,7 @@ useEffect(() => {
 
   const fetchBookings = async () => {
     try {
-      const response = await axios.get(`http://localhost:8000/api/bookings?center=${selectedCenter}&sport=${selectedSport}&date=${selectedDate}`);
+      const response = await axios.get(`https://gt-backend.onrender.com/api/bookings?center=${selectedCenter}&sport=${selectedSport}&date=${selectedDate}`);
       setBookings(response.data);
     } catch (error) {
       console.error('Error fetching bookings:', error);
@@ -84,7 +84,7 @@ useEffect(() => {
     console.log({selectedCenter,selectedSport,selectedDate})
     if (selectedCenter && selectedSport && selectedDate) {
       try {
-        const response = await axios.get(`http://localhost:8000/api/bookings/available-slots`, {
+        const response = await axios.get(`https://gt-backend.onrender.com/api/bookings/available-slots`, {
           params: {
             center: selectedCenter,
             sport: selectedSport,
@@ -139,7 +139,7 @@ useEffect(() => {
   const handleCreateBooking = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:8000/api/bookings', {
+      await axios.post('https://gt-backend.onrender.com/api/bookings', {
         center: selectedCenter,
         sport: selectedSport,
         court: newBooking.court,
