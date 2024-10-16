@@ -20,7 +20,7 @@ function LoginPage() {
     setError('');
 
     try {
-      const response = await axios.post('http://localhost:8000/api/auth/login', formData);
+      const response = await axios.post('https://gt-backend.onrender.com/api/auth/login', formData);
       console.log('Login successful:', response.data);
       localStorage.setItem('token', response.data.token); // Store the token in local storage
       navigate('/'); // Redirect to the home page after successful login
